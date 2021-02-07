@@ -55,4 +55,26 @@ public static float PerlinNoise(float x)
 ```
 
 ## 데모 적용 결과
+펄린 노이즈의 생성까지 완료했다면 유니티에서 이를 실행시켜 볼 차례이다. 아래 사진은 유니티 스크립팅 API에서 Mathf.PerlinNoise의 예제 스크립트를 큐브 오브젝트에 적용한 것이다.  
 
+유니티 스크립팅 API에서 Mathf.PerlinNoise의 예제 스크립트는 다음과 같다.  
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Example1 : MonoBehaviour
+{
+
+void Update()
+    {
+        float height = heightScale * PerlinNoise(Time.time * xScale);
+        Vector2 pos = transform.position;
+        pos.y = height;
+        transform.position = pos;
+    }
+}
+```
+간단한 프로그램이며 xScale, heightScale을 통하여 간단하게 진폭과 주기 제어 가능하다.  
+
+지금까지 펄린 노이즈에 대해서 간단히 활용할 수 있는 데모에 대해서 살펴 보았다. 이는 아주 간단한 코드이며 이해하기 어렵지 않지만 펄린 노이즈를 잘 활용하기 위해서는 위 내용들을 인지하여야 할 것이며, 이를 잘 활용한다면 파동 생성, 지형 생성 등 게임에서 랜덤성이 필요한 대부분에 기여할 수 있을 것이다. 추후 펄린 노이즈로 생성한 난수와 행동 트리 바탕으로 게임 속 NPC의 AI의 생성에 관하여 연구하고 업데이트 할 것이다.
